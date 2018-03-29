@@ -19,19 +19,24 @@
 template<typename T, typename C , typename A ,typename S>
 class GestionnaireGenerique {
 public:
+	GestionnaireGenerique():ajouter_(conteneur_),supprimer_(conteneur_) {
+
+	}
 	C obtenirConteneur() const {
 		return conteneur_;
 	}
 	void ajouter(T* pointeurGenerique) {
-		A(pointeurGenerique);
+		ajouter_(pointeurGenerique);
 	};
 	void supprime(T* pointeurGenerique) {
-		S(pointeurGenerique);
+		supprimer_(pointeurGenerique);
 	};
 	template<typename Predicat>
-	void pourChaqueElement(Predicat foncteur) {
-		for_each(conteneur_.begin,conteneur_.end,foncteur);
+	void pourChaqueElement(Predicat foncteur) const {
+		for_each(conteneur_.begin(),conteneur_.end(),foncteur);
 	}
 protected:
 	C conteneur_;
+	A ajouter_;
+	S supprimer_;
 };

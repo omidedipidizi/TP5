@@ -22,7 +22,6 @@ public:
 	}
 
 private:
-	template <typename T*>
 		T* t_;
 };
 
@@ -31,8 +30,8 @@ private:
 class FoncteurGenerateurId {
 public:
 	FoncteurGenerateurId() :id_(0) {}
-	void operator()() {
-		id_++;
+	int operator()() {
+		return id_++;
 	}
 private:
 	int id_;
@@ -68,8 +67,8 @@ private:
 class AjouterProduit {
 public:
 	AjouterProduit(multimap<int, Produit*>& multimap) :multimap_(multimap) {};
-	multimap<int, Produit*>& operator()(const pair<int,Produit*>& pair) {
-		multimap_.insert(make_pair(pair.first,pair.second));
+	multimap<int, Produit*>& operator()(Produit* produit) {
+		multimap_.insert(make_pair(produit->obtenirReference(),produit));
 		return multimap_;
 	}
 private:
@@ -86,9 +85,9 @@ Méthodes :
 class SupprimerProduit {
 public:
 	SupprimerProduit(multimap<int, Produit*>& multimap) :multimap_(multimap) {};
-	multimap<int, Produit*>& operator()(const pair<int, Produit*>& pair) {
-		FoncteurEgal<Produit> foncteurEgal(pair.second);
-		auto it= find_if(multimap_.begin, multimap_.end, foncteurEgal(pair));//on cherche la paire dans toute la multimap  
+	multimap<int, Produit*>& operator()(Produit* produit) {
+		FoncteurEgal<Produit> foncteurEgal(produit);
+		auto it= find_if(multimap_.begin(), multimap_.end(), foncteurEgal);//on cherche la paire dans toute la multimap  
 		if (it != multimap_.end()) {//si on trouve la paire
 			multimap_.erase(it);//on eleve la paire pointer par l'iterrateur
 		}
@@ -127,8 +126,8 @@ class SupprimerUsager {
 public:
 	SupprimerUsager(set<Usager*>& setUsage) :set_(setUsage){}
 	set<Usager*>& operator()(Usager* usager) {
-		set<Usager*>::iterator it = set_.find(usager);
-		if (it != set_.end) {//si on trouve l'usager
+		auto it = set_.find(usager);
+		if (it != set_.end()) {//si on trouve l'usager
 			set_.erase(it);//on supprime l'usager à l'aide de l'itérateur
 		}
 		return set_;

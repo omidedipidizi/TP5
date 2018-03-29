@@ -21,7 +21,7 @@ class Usager
 
     void modifierNom(const string &nom);
     void modifierPrenom(const string &prenom);
-    void modifierReference(int identifiant);
+    void modifierReference(int reference);
     void modifierCodePostal(const string &codePostal);
     virtual void reinitialiser() = 0;
     virtual void ajouterProduit(Produit *produit) = 0;

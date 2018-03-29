@@ -5,3 +5,8 @@
 *******************************************/
 
 #include "GestionnaireProduits.h"
+
+void GestionnaireProduits::reinitialiserClient()
+{
+
+}
