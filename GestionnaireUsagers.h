@@ -9,6 +9,7 @@
 #include "GestionnaireGenerique.h"
 #include "Client.h"
 #include "ProduitAuxEncheres.h"
+using namespace std;
 // TODO : Créer la classe GestionnaireUsager
 
 // TODO : La classe ressemble beaucoup à la classe Gestionnaire

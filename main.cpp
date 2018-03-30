@@ -2,7 +2,6 @@
 #include <iomanip>
 #include "Produit.h"
 #include "Solde.h"
-#include "ProduitAuxEncheres.h"
 #include "ProduitSolde.h"
 #include "Client.h"
 #include "ClientPremium.h"
@@ -11,6 +10,7 @@
 #include "GestionnaireUsagers.h"
 #include <vector>
 #include "Foncteur.h"
+#include "ProduitAuxEncheres.h"
 
 using namespace std;
 
@@ -121,7 +121,7 @@ int main()
                     nem.obtenirFournisseur() == &samuel &&
                     nem.obtenirPrix() == 2 &&
                     nem.obtenirPourcentageRabais() == 0);
-/*
+
     // TEST 13 : une surenchère doit être strictement supérieure à l'offre précédente
     poly.encherir(&julie, &violoncelle, 5000.0);
     tests.push_back(julie.obtenirPanier()->obtenirConteneur().size() == 0);
@@ -276,7 +276,7 @@ int main()
 		cout << "asdfljshfgkjsh" << endl;
 		intervalleProduit[i].second->afficher();
 	}*/
-/*
+
 	tests.push_back(intervalleProduit.size() == 2 &&
 		intervalleProduit[0].second->obtenirPrix() >= 20.0 &&
 		intervalleProduit[intervalleProduit.size() - 1].second->obtenirPrix() <= 2000.0);
@@ -293,8 +293,8 @@ int main()
     martine.afficherCatalogue();
     samuel.afficherCatalogue();
     mina.afficherCatalogue();
-    poly.afficherProfils();
-	*/
+    poly.afficher();
+
     cout << "TESTS" << endl;
     for (unsigned int i = 0; i < tests.size(); i++)
     {

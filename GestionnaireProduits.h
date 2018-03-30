@@ -8,6 +8,10 @@
 
 #include "GestionnaireGenerique.h"
 #include "Produit.h"
+#include "ProduitAuxEncheres.h"
+#include <vector>
+#include <functional> 
+using namespace std;
 // TODO : Créer la classe GestionnaireProduits
 
 // TODO : Méthodes :
@@ -28,8 +32,7 @@ class GestionnaireProduits:public GestionnaireGenerique<Produit, multimap<int,Pr
 	void afficher() const;
 	double obtenirTotalAPayer();
 	double obtenirTotalApayerPremium();
-	Produit trouverProduitPlusCher();
-	Produit obtenirProduitsEntre() const;
-	Produit obtenirProduitSuivant() const;
-
+	Produit* trouverProduitPlusCher();
+    vector<pair<int,Produit*>> obtenirProduitsEntre(double borneInferieur,double borneSupperieur) const;
+	Produit* obtenirProduitSuivant(Produit* produit) const;
 };
